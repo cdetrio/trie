@@ -17,10 +17,12 @@
 extern crate hash_db;
 extern crate tiny_keccak;
 extern crate hash256_std_hasher;
+extern crate ewasm_api;
 
 use hash_db::Hasher;
 use tiny_keccak::Keccak;
 use hash256_std_hasher::Hash256StdHasher;
+use ewasm_api::prelude::*;
 
 /// Concrete `Hasher` impl for the Keccak-256 hash
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -33,6 +35,7 @@ impl Hasher for KeccakHasher {
 	const LENGTH: usize = 32;
 
 	fn hash(x: &[u8]) -> Self::Out {
+		eth2::debug();
 		let mut out = [0u8; 32];
 		Keccak::keccak256(x, &mut out);
 		out

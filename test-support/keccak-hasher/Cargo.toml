@@ -11,6 +11,11 @@ tiny-keccak = "1.4.2"
 hash-db = { path = "../../hash-db", default-features = false, version = "0.12.4" }
 hash256-std-hasher = { path = "../../hash256-std-hasher", version = "0.12.4" }
 
+[dependencies.ewasm_api]
+path = "/benchprep/ewasm-rust-api"
+default-features = false
+features = ["std", "eth2", "wee_alloc", "debug"]
+
 [features]
 default = ["std"]
 std = [
